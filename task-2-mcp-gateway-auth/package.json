@@ -1,0 +1,26 @@
+{
+  "name": "task-2-mcp-gateway-auth",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "concurrently -k \"node dist/downstream.js\" \"node dist/gateway.js\"",
+    "dev:downstream": "tsx src/downstream.ts",
+    "dev:gateway": "tsx src/gateway.ts",
+    "dev": "concurrently -k \"npm:dev:downstream\" \"npm:dev:gateway\""
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.14.10",
+    "concurrently": "^8.2.2",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4"
+  }
+}

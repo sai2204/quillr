@@ -1,0 +1,28 @@
+{
+  "name": "task-4-llm-rate-limit-fallback-router",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev:providers": "tsx src/mockProviders.ts",
+    "dev:gateway": "tsx src/gateway.ts",
+    "dev": "concurrently -k \"npm:dev:providers\" \"npm:dev:gateway\"",
+    "start": "concurrently -k \"node dist/mockProviders.js\" \"node dist/gateway.js\"",
+    "test": "npm run test:core && npm run test:window && npm run test:concurrency",
+    "test:core": "tsx src/rateLimiter.test.ts",
+    "test:window": "tsx src/rateLimiter.window.test.ts",
+    "test:concurrency": "tsx src/rateLimiter.concurrency.test.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.2",
+    "concurrently": "^8.2.2",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4"
+  }
+}
